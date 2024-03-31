@@ -6,6 +6,7 @@ from collections import defaultdict
 from pathlib import Path
 from typing import Optional, Union
 
+import ffmpeg
 from accelerate import Accelerator
 import mir_eval
 import numpy as np
@@ -13,7 +14,6 @@ import torch.nn as nn
 from partitura import save_performance_midi
 from partitura.performance import PerformedPart, Performance
 from partitura.utils import pianoroll_to_notearray
-from rach3datautils.utils.multimedia import MultimediaTools
 from scipy.ndimage import gaussian_filter
 from torch import no_grad
 from tqdm import tqdm
@@ -98,7 +98,7 @@ def evaluate_on_dataset(samples, dataset_name, model_checkpoint, batch_size,
                                                 gaussian_sigma)
         onset_array = onset_array.astype(int) * 100
         session_files = [i for i in samples if vid_path in str(i[2])][0]
-        vid_len = MultimediaTools().ff_probe(session_files[2])
+        vid_len = ffmpeg.probe(filepath)
         vid_len = float(vid_len["streams"][0]["duration"])
         midi = PPAnMidi(vid_len, temporal_res, 0)
         midi.set_midi(session_files[0])
