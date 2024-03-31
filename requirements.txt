@@ -18,3 +18,4 @@ imageio==2.34.0
 ultralytics
 dill
 av
+ffmpeg-python==0.2.0
