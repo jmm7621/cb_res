@@ -18,3 +18,4 @@ accelerate==0.27.2
 moviepy
 imageio==2.34.0
 ultralytics
+dill
