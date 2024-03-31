@@ -19,3 +19,4 @@ moviepy
 imageio==2.34.0
 ultralytics
 dill
+av
