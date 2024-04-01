@@ -5,6 +5,8 @@ from abc import abstractmethod
 from pathlib import Path
 from typing import List, Tuple, Optional, Callable, Union
 
+from ultralytics import YOLO
+from tqdm import tqdm
 import nvidia.dali.fn as fn
 import nvidia.dali.plugin.pytorch.fn as pfn
 import torch
