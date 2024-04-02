@@ -412,14 +412,15 @@ class PPAnEvalDataset(BaseDataset):
         if self._augment is None:
             augmentations = [
                 v2.UniformTemporalSubsample(self.temporal_res_frames),
+                v2.Grayscale(num_output_channels=3),
                 v2.ToDtype(torch.float, scale=True),
             ]
-            if self.video_transform is not None:
-                if self.video_transform.do_normalize:
-                    augmentations.append(
-                        v2.Normalize(mean=self.video_transform.image_mean,
-                                     std=self.video_transform.image_std)
-                    )
+#            if self.video_transform is not None:
+#                if self.video_transform.do_normalize:
+#                    augmentations.append(
+#                        v2.Normalize(mean=self.video_transform.image_mean,
+#                                     std=self.video_transform.image_std)
+#                    )
             self._augment = v2.Compose(augmentations)
         return self._augment
 
