@@ -26,3 +26,4 @@ ftfy
 ffmpeg-python
 scipy
 ipympl
+pyfluidsynth
