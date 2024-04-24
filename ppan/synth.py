@@ -16,7 +16,7 @@ except ImportError:  # pragma: no cover
 from partitura.utils.synth import SAMPLE_RATE
 from partitura.performance import PerformanceLike
 from partitura.score import ScoreLike
-from partitura.utils.misc import PathLike, download_file
+from partitura.utils.misc import PathLike
 from partitura.utils.music import (
     ensure_notearray,
     get_time_units_from_note_array,
@@ -32,14 +32,6 @@ DEFAULT_SOUNDFONT = os.path.join(
     "assets",
     "MuseScore_General.sf3",
 )
-
-if not os.path.exists(DEFAULT_SOUNDFONT) and HAS_FLUIDSYNTH:  # pragma: no cover
-    print(f"Downloading soundfont from {DEFAULT_SOUNDFONT_URL}...")  # pragma: no cover
-    download_file(
-        url=DEFAULT_SOUNDFONT_URL,
-        out=DEFAULT_SOUNDFONT,
-    )  # pragma: no cover
-
 
 def synthesize_fluidsynth(
     note_info: Union[ScoreLike, PerformanceLike, np.ndarray],
