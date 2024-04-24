@@ -194,6 +194,7 @@ def save_to_midi(onset_array, name: str):
         )
     )
     save_performance_midi(performance_data=performance, out=name)
+    return performance
 
 
 def perf_to_int_pitch(perf):
